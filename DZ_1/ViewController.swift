@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     private lazy var numberGroupChangeLabel = UILabel()
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -33,43 +34,53 @@ class ViewController: UIViewController {
         
         SettingsButton()
         setNameLabel()
+
+        
+        SettingsLabel(label: nameLabel)
+        SettingsLabel(label: surnameLabel)
+        SettingsLabel(label: numberGroupLabel)
+        
+        
+        SettingsLabelChange(label: nameChangeLabel)
+        SettingsLabelChange(label: surnameChangeLabel)
+        SettingsLabelChange(label: numberGroupChangeLabel)
     }
+        
     
+    private func SettingsLabel(label: UILabel) {
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .black
+        label.numberOfLines = 0
+    }
+
+    private func SettingsLabelChange(label: UILabel) {
+        label.text = ""
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .red
+    }
+
     
     
     private func setNameLabel() {
-        nameLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        nameLabel.textColor = .black
-        nameLabel.numberOfLines = 0
+        
         nameLabel.text = "Name:"
         nameLabel.frame = CGRect(x: 51 , y: 80, width: 87, height: 19)
         
-        nameChangeLabel.text = ""
-        nameChangeLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        nameChangeLabel.textColor = .red
         nameChangeLabel.frame = CGRect(x: 105 , y: 80, width: 87, height: 19)
-        
+    
         surnameLabel.text = "Surname:"
-        surnameLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        surnameLabel.textColor = .black
         surnameLabel.frame = CGRect(x: 51 , y: 112, width: 153, height: 19)
         
-        surnameChangeLabel.text = ""
-        surnameChangeLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        surnameChangeLabel.textColor = .red
-        surnameChangeLabel.frame = CGRect(x: 128 , y: 112, width: 87, height: 19)
         
+        surnameChangeLabel.frame = CGRect(x: 128 , y: 112, width: 87, height: 19)
+
+    
         numberGroupLabel.text = "Group number:"
-        numberGroupLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        numberGroupLabel.textColor = .black
         numberGroupLabel.frame = CGRect(x: 51 , y: 144, width: 160, height: 19)
         
-        numberGroupChangeLabel.text = ""
-        numberGroupChangeLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        numberGroupChangeLabel.textColor = .red
         numberGroupChangeLabel.frame = CGRect(x: 168 , y: 144, width: 87, height: 19)
-        
     }
+    
     
     private func SettingsButton() {
         addButton.translatesAutoresizingMaskIntoConstraints = false
