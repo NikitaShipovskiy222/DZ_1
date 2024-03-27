@@ -31,14 +31,8 @@ class ViewController: UIViewController {
         view.addSubview(nameChangeLabel)
         view.addSubview(numberGroupChangeLabel)
         
-        setAddButton()
-        setDelAllButton()
+        SettingsButton()
         setNameLabel()
-        setSurnameLabel()
-        setNumberOfGroupLabel()
-        setSurnameChangeLabel()
-        setNameChangeLabel()
-        setNumberGroupChangeLabel()
     }
     
     
@@ -49,54 +43,35 @@ class ViewController: UIViewController {
         nameLabel.numberOfLines = 0
         nameLabel.text = "Name:"
         nameLabel.frame = CGRect(x: 51 , y: 80, width: 87, height: 19)
-    }
-    
-    
-    private func setNameChangeLabel(){
+        
+        nameChangeLabel.text = ""
         nameChangeLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         nameChangeLabel.textColor = .red
-        nameChangeLabel.numberOfLines = 0
-        nameChangeLabel.text = ""
         nameChangeLabel.frame = CGRect(x: 105 , y: 80, width: 87, height: 19)
-    }
-
-    
-    private func setSurnameLabel() {
+        
+        surnameLabel.text = "Surname:"
         surnameLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         surnameLabel.textColor = .black
-        surnameLabel.numberOfLines = 0
-        surnameLabel.text = "Surname:"
-        
         surnameLabel.frame = CGRect(x: 51 , y: 112, width: 153, height: 19)
-    }
-    
-    private func setSurnameChangeLabel() {
+        
+        surnameChangeLabel.text = ""
         surnameChangeLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         surnameChangeLabel.textColor = .red
-        surnameChangeLabel.numberOfLines = 0
-        surnameChangeLabel.text = ""
         surnameChangeLabel.frame = CGRect(x: 128 , y: 112, width: 87, height: 19)
-    }
-    
-    private func setNumberOfGroupLabel() {
+        
+        numberGroupLabel.text = "Group number:"
         numberGroupLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         numberGroupLabel.textColor = .black
-        numberGroupLabel.numberOfLines = 0
-        numberGroupLabel.text = "Group number:"
-        
         numberGroupLabel.frame = CGRect(x: 51 , y: 144, width: 160, height: 19)
-    }
-    
-    private func setNumberGroupChangeLabel(){
+        
+        numberGroupChangeLabel.text = ""
         numberGroupChangeLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         numberGroupChangeLabel.textColor = .red
-        numberGroupChangeLabel.numberOfLines = 0
-        numberGroupChangeLabel.text = ""
         numberGroupChangeLabel.frame = CGRect(x: 168 , y: 144, width: 87, height: 19)
+        
     }
     
-
-    private func setAddButton() {
+    private func SettingsButton() {
         addButton.translatesAutoresizingMaskIntoConstraints = false
         addButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         addButton.setTitleColor(.white, for: .normal)
@@ -105,6 +80,14 @@ class ViewController: UIViewController {
         addButton.layer.cornerRadius = 18
         addButton.frame = CGRect(x: 23, y: 700, width: 350, height: 69)
         addButton.addTarget(self, action: #selector(ShowMyName), for: .touchUpInside)
+        
+        
+        delAllButton.translatesAutoresizingMaskIntoConstraints = false
+        delAllButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        delAllButton.setTitle("Очистить данные", for: .normal)
+        delAllButton.setTitleColor(.systemBlue, for: .normal)
+        delAllButton.frame = CGRect(x: 130, y: 800, width: 139, height: 19)
+        delAllButton.addTarget(self, action: #selector(deleteAll), for: .touchUpInside)
     }
     
     @objc func ShowMyName() {
@@ -113,20 +96,10 @@ class ViewController: UIViewController {
         numberGroupChangeLabel.text = "Group 6"
     }
     
-    private func setDelAllButton() {
-        delAllButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        delAllButton.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        delAllButton.setTitle("Очистить данные", for: .normal)
-        delAllButton.setTitleColor(.systemBlue, for: .normal)
-        delAllButton.frame = CGRect(x: 130, y: 800, width: 139, height: 19)
-        delAllButton.addTarget(self, action: #selector(deleteAll), for: .touchUpInside)
-    }
-    
     @objc func deleteAll() {
-        nameChangeLabel.removeFromSuperview()
-        surnameChangeLabel.removeFromSuperview()
-        numberGroupChangeLabel.removeFromSuperview()
+        nameChangeLabel.text = ""
+        surnameChangeLabel.text = ""
+        numberGroupChangeLabel.text = ""
         
     }
 
